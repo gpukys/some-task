@@ -1,0 +1,14 @@
+<div (click)="editMode = !editMode" *ngIf="!editMode; else edit">+ Add new node</div>
+<ng-template #edit>
+  <form [formGroup]="form" (ngSubmit)="addNode()">
+    <mat-form-field>
+      <input matInput formControlName="name" autofocus>
+      <button type="submit" mat-icon-button matSuffix *ngIf="form.valid"  (click)="addNode()">
+        <mat-icon>done</mat-icon>
+      </button>
+      <button mat-icon-button matSuffix (click)="form.get('name').setValue(''); editMode = false">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </form>
+</ng-template>

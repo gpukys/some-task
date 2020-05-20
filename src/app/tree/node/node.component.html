@@ -1,0 +1,5 @@
+<div class="container" (click)="childrenVisible = !childrenVisible">{{node.title}} <mat-icon>{{childrenVisible ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</mat-icon></div>
+<div *ngIf="childrenVisible" class="children">
+  <app-node *ngFor="let node of node.children" [node]="node"></app-node>
+  <app-add-node (added)="addNode($event)"></app-add-node>
+</div>
